@@ -1,0 +1,127 @@
+.hero-section {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background-color: var(--background-color); /* Consistent with other sections */
+  color: var(--text-color);
+}
+
+.hero-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.hero-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.hero-left h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.hero-description {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.resume-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: left; /* center horizontally */
+  }
+  
+  .resume-button {
+    padding: 0.6rem 1.4rem;
+    background-color: #007bff;
+    color: white;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+    font-size: 1rem;
+    cursor: pointer;
+    max-width: 200px;
+    text-align: center;
+  }
+  
+  .resume-button:hover {
+    background-color: #0056b3;
+  }  
+
+.hero-right {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 280px;
+}
+
+.profile-wrapper {
+  position: relative;
+  width: 300px; /* Enlarged profile picture */
+  height: 300px;
+}
+
+.profile-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(from 90deg, #6366f1, #06b6d4, #9333ea, #6366f1);
+  animation: rotateGlow 5s linear infinite;
+  z-index: 0;
+  filter: blur(12px);
+}
+
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.profile-pic {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 1;
+  border: 3px solid #8b5cf6;
+}
+
+body.light .resume-button {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  body.dark .resume-button {
+    background-color: #007bff;
+    color: white;
+  }
+
+  .typing-text {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  
+  .highlight {
+    color: #00f7fc; /* Light blue */
+    font-weight: bold;
+  }
