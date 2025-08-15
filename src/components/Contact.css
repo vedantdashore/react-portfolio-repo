@@ -1,0 +1,108 @@
+/* =================================
+   Contact Me Section Styles
+   ================================= */
+
+   .contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align all content */
+    padding: 3rem 1rem;
+    width: 100%;
+    text-align: center; /* Center text for all children */
+  }
+  
+  .contact-container h2 {
+    font-size: 2.5rem; /* Example size, adjust as needed */
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+  
+  .contact-info {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items in the column */
+    gap: 1rem; /* Space between contact items */
+    margin-bottom: 2.5rem;
+  }
+  
+  .contact-item {
+    font-size: 1.1rem;
+  }
+  
+  .contact-item a {
+    color: #8ab4f8; /* A nice blue for links, adjust to your theme */
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .contact-item a:hover {
+    color: #a5c6fa; /* Lighter blue on hover */
+    text-decoration: underline;
+  }
+  
+  /* =================================
+     Resume Button Styles
+     ================================= */
+  
+  .resume-container {
+    /* This container is already in your JS */
+    margin-top: 1rem; /* Add some space above the button */
+  }
+  
+  .resume-button {
+    display: inline-block;
+    background-color: #30363d; /* A neutral dark gray */
+    color: #eaeaea;
+    padding: 12px 24px;
+    border: 1px solid #484f58;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .resume-button:hover {
+    background-color: #484f58; /* Lighter gray on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+  }
+  
+  /* =================================
+     Light Mode Styles (Optional)
+     ================================= */
+  
+  body.light .contact-item a {
+    color: #1a73e8;
+  }
+  
+  body.light .contact-item a:hover {
+    color: #4285f4;
+  }
+  
+  body.light .resume-button {
+    background-color: #e2e8f0;
+    color: #111111;
+    border-color: #d1d5db;
+  }
+  
+  body.light .resume-button:hover {
+    background-color: #cbd5e1;
+  }
+  
+  .contact-item {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .contact-icon {
+    font-size: 1.2rem;
+    margin-right: 0.25rem;
+    color: #8ab4f8;
+  }
+  
+  body.light .contact-icon {
+    color: #1a73e8;
+  }
+  
