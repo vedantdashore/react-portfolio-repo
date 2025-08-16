@@ -1,5 +1,4 @@
 // src/App.js
-
 import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
@@ -9,7 +8,7 @@ import Projects from './components/Projects';
 import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import ParticlesBackground from './components/ParticlesBackground';
+import VantaBackground from './components/VantaBackground';
 
 function App() {
   const [theme, setTheme] = useState('dark');
@@ -24,9 +23,8 @@ function App() {
 
   return (
     <div className={`app ${theme}`}>
-      <ParticlesBackground />
-      <Navbar toggleTheme={toggleTheme} currentTheme={theme} />
-
+    <VantaBackground theme={theme} />
+    <Navbar toggleTheme={toggleTheme} currentTheme={theme} />
       <Routes>
         <Route
           path="/"

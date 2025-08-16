@@ -1,11 +1,6 @@
 /* ========== Global Reset & Font ========== */
-body, html {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  font-family: 'Segoe UI', sans-serif;
-  transition: background-color 0.4s ease, color 0.4s ease;
+* {
+  box-sizing: border-box;
 }
 
 html, body {
@@ -13,11 +8,12 @@ html, body {
   padding: 0;
   overflow-x: hidden;
   height: 100%;
+  scroll-behavior: smooth;
 }
 
-
-* {
-  box-sizing: border-box;
+body {
+  font-family: 'Segoe UI', sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* ========== Light Theme ========== */
@@ -28,7 +24,7 @@ body.light {
   color: #111111;
 }
 
-/* ========== Dark Theme with Animated Gradient ========== */
+/* ========== Dark Theme ========== */
 body.dark {
   background: linear-gradient(-45deg, #1a1a40, #16163f, #1b1f3a, #101124);
   background-size: 400% 400%;
@@ -36,15 +32,13 @@ body.dark {
   color: #e6edf3;
 }
 
-/* ========== Gradient Keyframes ========== */
-@keyframes darkFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes lightFlow {
-  0% { background-position: 50% 0%; }
-  50% { background-position: 50% 100%; }
-  100% { background-position: 50% 0%; }
+.vanta-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: none;
 }

@@ -24,7 +24,7 @@ body.light .navbar {
   align-items: center;
   max-width: 1200px;
   margin: auto;
-  padding: 0; /* remove double padding, since navbar already has padding */
+  padding: 0;
 }
 
 .logo {
@@ -36,7 +36,7 @@ body.light .navbar {
 }
 
 body.light .logo {
-  color: #0366d6; /* a darker blue for light mode */
+  color: #0366d6;
 }
 
 .nav-links {
@@ -92,6 +92,7 @@ body:not(.light) {
   padding-left: 1rem;
   display: flex;
   align-items: center;
+  cursor: default; /* This is the key fix for the li element */
 }
 
 .theme-toggle {
@@ -101,20 +102,17 @@ body:not(.light) {
   user-select: none;
 }
 
-/* Switch toggle styling */
-
 .switch {
   position: relative;
   display: inline-block;
-  width: 50px;
-  height: 26px;
+  width: 46px;
+  height: 24px;
 }
 
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
-  position: absolute;
 }
 
 .slider {
@@ -125,35 +123,34 @@ body:not(.light) {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  transition: background-color 0.4s;
-  border-radius: 26px;
+  transition: 0.4s;
+  border-radius: 34px;
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 20px;
-  width: 20px;
+  height: 18px;
+  width: 18px;
   left: 3px;
   bottom: 3px;
   background-color: white;
-  transition: transform 0.4s;
+  transition: 0.4s;
   border-radius: 50%;
 }
 
-.switch input:checked + .slider {
+input:checked + .slider {
   background-color: #58a6ff;
 }
 
-.switch input:checked + .slider:before {
-  transform: translateX(24px);
+input:checked + .slider:before {
+  transform: translateX(22px);
 }
 
-/* components/Navbar.css */
-.navbar {
-  position: sticky; /* or fixed if needed */
-  top: 0;
-  z-index: 10;
-  background-color: rgba(0,0,0,0.8);
-  padding: 1rem;
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
