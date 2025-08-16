@@ -1,3 +1,4 @@
+// src/components/Navbar.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Navbar.css';
@@ -14,7 +15,7 @@ function Navbar({ theme, toggleTheme }) {
       setTimeout(() => {
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 300); // increased delay
+      }, 300);
     }
   };
 
@@ -30,14 +31,15 @@ function Navbar({ theme, toggleTheme }) {
           <li onClick={() => scrollToSection('education')}>Education</li>
           <li onClick={() => scrollToSection('contact')}>Contact</li>
           <li className="theme-switch">
-            <label className="switch">
-              <input
-                type="checkbox"
-                checked={theme === 'light'}
-                onChange={toggleTheme}
-              />
-              <span className="slider"></span>
-            </label>
+          <label className="switch">
+            <input
+              type="checkbox"
+              onChange={toggleTheme}
+              checked={theme === 'dark'}
+            />
+            <span className="slider round"></span>
+          </label>
+
           </li>
         </ul>
       </div>
