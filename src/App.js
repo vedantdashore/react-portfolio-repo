@@ -24,7 +24,7 @@ function App() {
   return (
     <div className={`app ${theme}`}>
     <VantaBackground theme={theme} />
-    <Navbar toggleTheme={toggleTheme} currentTheme={theme} />
+    <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Routes>
         <Route
           path="/"

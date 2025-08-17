@@ -22,10 +22,12 @@ function VantaBackground({ theme }) {
       scale: 1.0,
       scaleMobile: 1.0,
       points: 6.0,
-      maxDistance: 20.0,
+      maxDistance: 15.0,
       spacing: 20.0,
-      color: isDark ? 0xffffff : 0x000000,
+      color: isDark ? 0xffffff : 0x000000, // dot + line color
       backgroundColor: isDark ? 0x0d1117 : 0xf2f2f2,
+      showDots: true,
+      showLines: true,
     });
 
     setVantaEffect(newEffect);
