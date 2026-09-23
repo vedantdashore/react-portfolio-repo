@@ -10,13 +10,11 @@
   --text: #e6edf3;
   --text-muted: #8b98a9;
   --text-faint: #5b6778;
-  --accent: #38bdf8;
-  --accent-2: #a78bfa;
-  --accent-soft: rgba(56, 189, 248, 0.12);
-  --success: #34d399;
-  --gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 55%, #c084fc 100%);
-  --shadow: 0 10px 40px -12px rgba(0, 0, 0, 0.6);
-  --glow: 0 0 0 1px rgba(56, 189, 248, 0.35), 0 12px 40px -10px rgba(56, 189, 248, 0.35);
+  --accent: #5ec8f2;
+  --accent-ink: #06141c;
+  --accent-soft: rgba(94, 200, 242, 0.1);
+  --success: #4ade80;
+  --shadow: 0 8px 30px -16px rgba(0, 0, 0, 0.7);
   color-scheme: dark;
 }
 
@@ -30,13 +28,11 @@
   --text: #0f172a;
   --text-muted: #4b5a70;
   --text-faint: #8391a5;
-  --accent: #0284c7;
-  --accent-2: #7c3aed;
-  --accent-soft: rgba(2, 132, 199, 0.09);
-  --success: #059669;
-  --gradient: linear-gradient(135deg, #0284c7 0%, #4f46e5 55%, #9333ea 100%);
-  --shadow: 0 10px 34px -14px rgba(15, 23, 42, 0.22);
-  --glow: 0 0 0 1px rgba(2, 132, 199, 0.3), 0 12px 34px -12px rgba(2, 132, 199, 0.3);
+  --accent: #0369a1;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(3, 105, 161, 0.08);
+  --success: #15803d;
+  --shadow: 0 8px 26px -18px rgba(15, 23, 42, 0.35);
   color-scheme: light;
 }
 
@@ -87,13 +83,6 @@ img {
   font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-.gradient-text {
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
 /* ========== Layout ========== */
 .container {
   width: 100%;
@@ -120,9 +109,9 @@ img {
 }
 
 .section-title {
-  font-size: clamp(1.9rem, 4vw, 2.6rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-size: clamp(1.7rem, 3.4vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
   line-height: 1.15;
   margin: 0;
 }
@@ -137,17 +126,14 @@ img {
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: var(--shadow);
-  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color 0.2s ease;
 }
 
 .card-hover:hover {
   border-color: var(--border-strong);
-  transform: translateY(-4px);
-  box-shadow: var(--glow);
 }
 
 /* ========== Buttons ========== */
@@ -155,17 +141,13 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 20px;
-  border-radius: 10px;
-  font: 600 0.95rem 'Inter', sans-serif;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font: 500 0.93rem 'Inter', sans-serif;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
   white-space: nowrap;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
 }
 
 .btn:focus-visible,
@@ -177,13 +159,12 @@ button:focus-visible {
 }
 
 .btn-primary {
-  background: var(--gradient);
-  color: #fff;
-  box-shadow: 0 8px 24px -8px rgba(99, 102, 241, 0.55);
+  background: var(--accent);
+  color: var(--accent-ink);
 }
 
 .btn-primary:hover {
-  box-shadow: 0 12px 30px -8px rgba(99, 102, 241, 0.7);
+  opacity: 0.88;
 }
 
 .btn-ghost {
@@ -201,21 +182,20 @@ button:focus-visible {
 .icon-btn {
   display: inline-grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
   background: var(--surface);
   border: 1px solid var(--border);
   color: var(--text-muted);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   cursor: pointer;
-  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .icon-btn:hover {
   color: var(--accent);
   border-color: var(--accent);
-  transform: translateY(-2px);
 }
 
 /* ========== Chips ========== */
@@ -230,20 +210,19 @@ button:focus-visible {
 
 .chip {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.74rem;
-  padding: 4px 10px;
-  border-radius: 999px;
-  color: var(--accent);
-  background: var(--accent-soft);
-  border: 1px solid transparent;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: var(--text-muted);
+  border: 1px solid var(--border-strong);
   white-space: nowrap;
 }
 
 /* ========== Scroll reveal ========== */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .reveal.is-visible {

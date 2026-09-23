@@ -55,14 +55,13 @@ function Navbar({ theme, toggleTheme }) {
         </a>
 
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-          {links.map((link, i) => (
+          {links.map((link) => (
             <a
               key={link.id}
               href={`#${link.id}`}
               className={`nav-link ${active === link.id ? 'active' : ''}`}
               onClick={() => setMenuOpen(false)}
             >
-              <span className="nav-index mono">0{i + 1}.</span>
               {link.label}
             </a>
           ))}

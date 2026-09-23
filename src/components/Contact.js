@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiMail, FiDownload, FiArrowUpRight } from 'react-icons/fi';
+import { FiMail, FiArrowUpRight } from 'react-icons/fi';
 import { FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import './Contact.css';
 import { profile } from '../data/resume';
@@ -15,23 +15,12 @@ const Contact = () => {
     <section id="contact" className="section">
       <div className="container">
         <div className="card contact-panel reveal">
-          <p className="section-eyebrow">{'// 06. contact'}</p>
-          <h2 className="section-title">
-            Let's build something <span className="gradient-text">together</span>
-          </h2>
+          <p className="section-eyebrow">{'// contact'}</p>
+          <h2 className="section-title">Get in touch</h2>
           <p className="contact-lead">
-            I'm always open to conversations about internships, research, and projects in cybersecurity, AI and
-            data. The best way to reach me is email.
+            Email is the easiest way to reach me. I'm happy to talk about internships, research, or anything on
+            this page.
           </p>
-
-          <div className="contact-actions">
-            <a href={`mailto:${profile.email}`} className="btn btn-primary">
-              <FiMail /> Say hello
-            </a>
-            <a href="/resume.pdf" download="Vedant_Dashore_Resume.pdf" className="btn btn-ghost">
-              <FiDownload /> Download Resume
-            </a>
-          </div>
 
           <div className="contact-grid">
             {channels.map(({ label, value, href, Icon, external }) => (
@@ -41,9 +30,7 @@ const Contact = () => {
                 className="contact-item"
                 {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               >
-                <span className="contact-icon">
-                  <Icon />
-                </span>
+                <Icon className="contact-icon" />
                 <span className="contact-text">
                   <span className="contact-label mono">{label}</span>
                   <span className="contact-value">{value}</span>

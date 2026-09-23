@@ -8,24 +8,27 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/vedant-dashore',
   github: 'https://github.com/vedantdashore',
   location: 'Notre Dame, IN',
-  tagline: "Computer Engineering @ Notre Dame '28",
-  roles: [
-    'cybersecurity & GRC',
-    'AI automation',
-    'machine learning',
-    'data-driven strategy',
+  intro: [
+    "I'm a computer engineering student at Notre Dame (class of 2028), minoring in Engineering Corporate Practice and Data Science.",
+    "This summer I interned on Aramco's cybersecurity GRC team in Houston, reviewing third-party software risk and building five Copilot Studio agents to cut down on manual tracking. I've also trained NLP models for content moderation, worked at an edtech startup, and done a few consulting projects through SIBC and NDVC. Outside of class, I spend a lot of my time on mental health advocacy.",
   ],
-  summary:
-    "I'm a Computer Engineering student at the University of Notre Dame, minoring in Engineering Corporate Practice and Data Science. I work where technology meets business: securing enterprise systems, building AI agents that remove manual work, and training models that make platforms safer. I'm also a mental health advocate who cares about building supportive teams and communities.",
-  stats: [
-    { value: '3.63', label: 'GPA' },
-    { value: '5', label: 'AI agents shipped' },
-    { value: '2.7M+', label: 'posts classified' },
-    { value: '86.4%', label: 'micro F1 score' },
+  now: [
+    { key: 'now', value: 'POET Peer Educator, Notre Dame' },
+    { key: 'prev', value: "GRC Intern, Aramco (summer '26)" },
+    { key: 'into', value: 'security, ML, data' },
   ],
 };
 
 export const experience = [
+  {
+    role: 'POET Peer Educator',
+    org: 'University of Notre Dame',
+    location: 'Notre Dame, IN',
+    start: 'Aug 2026',
+    end: 'Present',
+    bullets: [],
+    tags: [],
+  },
   {
     role: 'Cybersecurity, Governance, Risk & Compliance (GRC) Intern',
     org: 'Aramco',
@@ -45,9 +48,9 @@ export const experience = [
     org: 'ND Listens',
     location: 'Notre Dame, IN',
     start: 'Sep 2025',
-    end: 'Present',
+    end: 'Aug 2026',
     bullets: [
-      "Engage with 60+ alumni weekly to strengthen the university's community network, communicating key initiatives and leading campus tours.",
+      "Talked with 60+ alumni a week to strengthen the university's community network, sharing key initiatives and leading campus tours.",
       "Collected and analyzed feedback from 200+ alumni conversations to inform ND Listens' outreach strategy.",
     ],
     tags: ['Communication', 'Relationship Building', 'Feedback Analysis'],
@@ -116,7 +119,6 @@ export const projects = [
     start: 'Feb 2026',
     end: 'May 2026',
     summary: 'MentalBERT multilabel classifier detecting harmful content across 2.7M+ anonymous Whisper posts.',
-    metric: '86.4% Micro F1',
     bullets: [
       'Developed a MentalBERT-based multilabel classifier to detect harmful content across 2.7M+ anonymous posts on Whisper.',
       'Fine-tuned transformer models to reach 86.4% Micro F1 and 81.8% Macro F1 on multilabel harmful-content detection.',
@@ -131,7 +133,6 @@ export const projects = [
     start: 'Feb 2026',
     end: 'Apr 2026',
     summary: 'AI-driven pharmacy transaction platform for 10k+ potential accounts. Reached the finals.',
-    metric: 'Finalist',
     bullets: [
       'Collaborated with 4 teammates to develop Calm Health AI to optimize pharmacy transactions for 10k+ potential accounts.',
       'Presented a 15-slide investor pitch deck covering financials and data security, with research across 3 healthcare sectors.',
@@ -146,7 +147,6 @@ export const projects = [
     start: 'Jan 2026',
     end: 'Apr 2026',
     summary: 'Led a 10-member team advising a post-merger health-tech company on data integrity.',
-    metric: 'Project Lead',
     bullets: [
       'Led a 10-member consulting team advising a post-merger health-tech company on data integrity and operational challenges.',
       'Evaluated 4 enterprise data platforms, recommending Microsoft Fabric and a 24-month implementation roadmap with ROI analysis.',
@@ -161,7 +161,6 @@ export const projects = [
     start: 'Aug 2025',
     end: 'Dec 2025',
     summary: 'SAP S/4HANA, EAM and FSM transformation roadmap for a global manufacturer.',
-    metric: '-20% downtime',
     bullets: [
       'Assessed SAP S/4HANA, EAM and FSM technology for a global manufacturer, identifying gaps in maintenance, visibility and operations.',
       'Designed an 18-month transformation map for 200+ franchises covering integration strategy and KPI-driven deployment.',
@@ -176,7 +175,6 @@ export const projects = [
     start: 'Sep 2025',
     end: 'Dec 2025',
     summary: 'Market diligence and vertical SaaS sourcing across 3 sectors.',
-    metric: '10+ inefficiencies',
     bullets: [
       'Conducted market diligence across 3 sectors, evaluating TAM, growth drivers and vertical SaaS investment opportunities.',
       'Analyzed PitchBook and IBISWorld datasets to identify 10+ market inefficiencies supporting venture investment theses.',
@@ -191,7 +189,6 @@ export const projects = [
     start: 'Aug 2025',
     end: 'Dec 2025',
     summary: 'Consumer-trend research for new organic-food products.',
-    metric: 'Go-to-market',
     bullets: [
       'Conducted market research and consumer trend analysis to identify new products in the organic foods industry for Nestlé.',
       'Designed data-driven product ideas and delivered go-to-market recommendations based on competitive benchmarking.',
@@ -205,7 +202,6 @@ export const projects = [
     start: 'Jul 2025',
     end: 'Aug 2025',
     summary: 'Python ML pipelines, PCA and fairness analysis on 10k+ record datasets.',
-    metric: '10k+ records',
     bullets: [
       'Processed 10k+ record datasets with Python data science pipelines, generating insights through statistical analysis and visuals.',
       'Built ML models using PCA and classification algorithms, optimizing feature selection and predictive accuracy.',
@@ -221,7 +217,6 @@ export const projects = [
     start: 'Oct 2024',
     end: 'Jan 2025',
     summary: 'Campus viability study for a college rideshare startup across 10+ campuses.',
-    metric: '200+ students surveyed',
     bullets: [
       'Selected from 200+ applicants to evaluate campus viability for Yelo, a college rideshare startup.',
       'Assessed social-scene dynamics, transportation access and Greek life influence across 10+ campuses with 10,000+ potential users.',
@@ -236,7 +231,6 @@ export const projects = [
     start: 'Aug 2025',
     end: 'Dec 2025',
     summary: 'Low-level C, Unix system calls, multithreading and TCP client-server apps.',
-    metric: '10+ C programs',
     bullets: [
       'Built 10+ low-level C programs using Unix system calls, managing heap/stack memory, pointers, files and process states.',
       'Implemented multithreaded and multiprocess designs with pthreads and fork, analyzing synchronization and performance tradeoffs.',
@@ -252,7 +246,6 @@ export const projects = [
     start: 'Jan 2025',
     end: 'May 2025',
     summary: 'Real-time terminal simulation in C with custom scenes and game modes.',
-    metric: '1,000+ cells / frame',
     bullets: [
       'Engineered the simulation in C with dynamic memory allocation, modular architecture and pointer manipulation for 1,000+ cell states per frame.',
       'Used Makefile automation across 5+ source modules, streamlining builds and cutting error frequency by 25%.',
@@ -267,7 +260,6 @@ export const projects = [
     start: 'Aug 2024',
     end: 'Dec 2024',
     summary: 'Servo-actuated Arduino enclosure for monitoring South Bend air quality.',
-    metric: '5 prototypes',
     bullets: [
       'Designed and prototyped a sensor housing to monitor outdoor air quality around South Bend, including wildfire pollution.',
       'Modeled 5 housing iterations in SolidWorks with a servo-driven open/close mechanism controlled by an Arduino.',
@@ -314,7 +306,6 @@ export const education = [
     degree: 'B.S. Computer Engineering',
     detail: 'Minors in Engineering Corporate Practice & Data Science',
     date: 'Expected May 2028',
-    highlight: 'GPA 3.63',
     items: ['Data Structures & Algorithms', 'Systems Programming', 'Fundamentals of Computing', 'Engineering Design'],
   },
   {
@@ -332,7 +323,6 @@ export const education = [
     degree: 'International Baccalaureate Diploma',
     detail: 'Higher Level: Math AA, Physics, Chemistry',
     date: 'Graduated 2024',
-    highlight: 'IB Diploma',
     items: ['Math AA HL', 'Physics HL', 'Chemistry HL', 'Economics SL', 'English Lang & Lit SL', 'Spanish ab initio SL'],
   },
 ];

@@ -1,7 +1,6 @@
 // src/components/Hero.js
 import React from 'react';
-import { Typewriter } from 'react-simple-typewriter';
-import { FiDownload, FiArrowRight, FiMail, FiMapPin, FiShield, FiCpu } from 'react-icons/fi';
+import { FiDownload, FiMail } from 'react-icons/fi';
 import { FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import './Hero.css';
 import headshot from '../assets/headshot.jpg';
@@ -12,38 +11,33 @@ function Hero() {
     <section className="hero" id="hero">
       <div className="container hero-grid">
         <div className="hero-copy">
-          <p className="hero-badge mono reveal">
-            <span className="pulse-dot" aria-hidden="true" />
-            {profile.tagline}
+          <p className="hero-prompt mono reveal">
+            <span className="prompt">$</span> whoami
           </p>
 
-          <h1 className="hero-title reveal">
-            Hi, I'm <span className="gradient-text">Vedant Dashore</span>
-          </h1>
+          <h1 className="hero-title reveal">{profile.name}</h1>
 
-          <p className="hero-typing mono reveal" aria-label={`Working on ${profile.roles.join(', ')}`}>
-            <span className="prompt">$</span> focus --on{' '}
-            <span className="typed">
-              <Typewriter
-                words={profile.roles}
-                loop={0}
-                cursor
-                cursorStyle="▍"
-                typeSpeed={65}
-                deleteSpeed={40}
-                delaySpeed={1600}
-              />
-            </span>
-          </p>
+          <div className="hero-intro reveal">
+            {profile.intro.map((para) => (
+              <p key={para}>{para}</p>
+            ))}
+          </div>
 
-          <p className="hero-summary reveal">{profile.summary}</p>
+          <dl className="hero-now mono reveal">
+            {profile.now.map((row) => (
+              <div key={row.key} className="now-row">
+                <dt>{row.key}</dt>
+                <dd>{row.value}</dd>
+              </div>
+            ))}
+          </dl>
 
           <div className="hero-cta reveal">
             <a href="/resume.pdf" download="Vedant_Dashore_Resume.pdf" className="btn btn-primary">
-              <FiDownload /> Download Resume
+              <FiDownload /> Resume
             </a>
-            <a href="#contact" className="btn btn-ghost">
-              Get in touch <FiArrowRight />
+            <a href={`mailto:${profile.email}`} className="btn btn-ghost">
+              <FiMail /> Email me
             </a>
             <div className="hero-socials">
               <a className="icon-btn" href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -52,46 +46,22 @@ function Hero() {
               <a className="icon-btn" href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <FaGithub />
               </a>
-              <a className="icon-btn" href={`mailto:${profile.email}`} aria-label="Email">
-                <FiMail />
-              </a>
             </div>
           </div>
-
-          <dl className="hero-stats reveal">
-            {profile.stats.map((s) => (
-              <div key={s.label} className="stat">
-                <dt className="stat-label">{s.label}</dt>
-                <dd className="stat-value mono">{s.value}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
 
-        <div className="hero-visual reveal">
-          <div className="photo-window card">
+        <figure className="hero-visual reveal">
+          <div className="photo-window">
             <div className="window-bar">
-              <span className="dot red" />
-              <span className="dot yellow" />
-              <span className="dot green" />
+              <span className="dot" />
+              <span className="dot" />
+              <span className="dot" />
               <span className="window-title mono">vedant.jpg</span>
             </div>
-            <div className="photo-frame">
-              <img src={headshot} alt="Headshot of Vedant Dashore" width="800" height="1078" />
-            </div>
-            <div className="window-footer mono">
-              <FiMapPin /> {profile.location}
-              <span className="status-ok">● available</span>
-            </div>
+            <img src={headshot} alt="Vedant Dashore" width="800" height="1078" />
           </div>
-
-          <div className="float-badge badge-a card mono">
-            <FiShield /> GRC @ Aramco
-          </div>
-          <div className="float-badge badge-b card mono">
-            <FiCpu /> ML · NLP · AI Agents
-          </div>
-        </div>
+          <figcaption className="photo-caption mono">{profile.location}</figcaption>
+        </figure>
       </div>
     </section>
   );

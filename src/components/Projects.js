@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FiX, FiArrowUpRight, FiFolder } from 'react-icons/fi';
+import { FiX, FiArrowUpRight } from 'react-icons/fi';
 import './Projects.css';
 import { projects, projectCategories } from '../data/resume';
 
@@ -24,10 +24,10 @@ function Projects() {
     <section id="projects" className="section">
       <div className="container">
         <header className="section-header reveal">
-          <p className="section-eyebrow">{'// 02. projects'}</p>
-          <h2 className="section-title">Things I've built &amp; advised on</h2>
+          <p className="section-eyebrow">{'// projects'}</p>
+          <h2 className="section-title">Projects</h2>
           <p className="section-subtitle">
-            Machine learning, consulting engagements, venture diligence and systems work. Click a card for details.
+            Some ML work, consulting and venture projects from campus clubs, and a few things from class.
           </p>
         </header>
 
@@ -58,18 +58,14 @@ function Projects() {
               onClick={() => setSelected(p)}
             >
               <div className="project-top">
-                <FiFolder className="project-folder" />
-                <span className="project-metric mono">{p.metric}</span>
+                <span className="project-date mono">
+                  {p.start} – {p.end}
+                </span>
+                <FiArrowUpRight className="project-arrow" />
               </div>
               <h3 className="project-title">{p.title}</h3>
               <p className="project-org">{p.org}</p>
               <p className="project-summary">{p.summary}</p>
-              <div className="project-foot">
-                <span className="project-date mono">
-                  {p.start} — {p.end}
-                </span>
-                <FiArrowUpRight className="project-arrow" />
-              </div>
               <ul className="chip-list">
                 {p.tags.slice(0, 4).map((t) => (
                   <li key={t} className="chip">
@@ -99,7 +95,7 @@ function Projects() {
               {selected.title}
             </h3>
             <p className="modal-meta mono">
-              {selected.org} · {selected.start} — {selected.end}
+              {selected.org} · {selected.start} – {selected.end}
             </p>
             <ul className="modal-bullets">
               {selected.bullets.map((b) => (
