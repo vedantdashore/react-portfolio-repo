@@ -1,106 +1,118 @@
-
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { FiX, FiArrowUpRight, FiFolder } from 'react-icons/fi';
 import './Projects.css';
-
-const projectData = [
-  {
-    title: "Pi-Squared Internship",
-    description: "Gamifying math with an edtech startup.",
-    tags: ["Excel", "User Interviews", "Game Design", "UI/UX"],
-    status: "Completed",
-    start: "May 2025",
-    end: "Aug 2025",
-    details: "Interned at Pi-Squared, creators of the 'Wordle for math' app. Developed educational game content, refined UX features, and collected user feedback to improve the product, working in constant collaboration with David Carr"
-  },
-  {
-    title: "Notre Dame London Programme",
-    description: "Studied Victorian History, Data Science and Machine Learning in a summer abroad.",
-    tags: ["Python", "Neural Networks", "Google Colab", "Classification"],
-    start: "July 2025",
-    end: "Aug 2025",
-    details: "Studied Victorian history and data science. Explored housing and reform through site visits, and practiced machine learning techniques in Python using Google Colab. Processed and analyzed datasets with over 10,000 records, applying dimensionality reduction and classification algorithms. Completed training on ethical considerations in machine learning, including bias detection and responsible AI practices in companies."
-  },
-  {
-    title: "President's Circle Mentorship",
-    description: "Professional mentorship and global market insights.",
-    tags: ["Mentorship", "Leadership", "Economics", "Fintech"],
-    status: "InProgress",
-    start: "July 2025",
-    end: "Present",
-    details: "Connected with alumni mentor Chris Whitman CFO of Convergence Value Partners with decades of experience with Deustche Bank in London. Discussed leadership, finance, economics and career goals. Learned an immense amount abot the fintech space."
-  },
-  {
-    title: "Mental Health Initiative",
-    description: "Workshops and outreach on emotional well-being especially of Men after COVID.",
-    tags: ["Community Impact", "Social Media", "Research", "Leadership", "Public-Speaking"],
-    status: "Completed",
-    start: "Dec 2022",
-    end: "Aug 2024",
-    details: "Founded initiative to promote mental health among Saudi Aramco employees. Reached 250+ men through workshops, surveys, and social media campaign. Increased awareness and advocated for men being able to showcase their feelings and emotions."
-  },
-  {
-    title: "IDEA Center Fellowship",
-    description: "Sustainability strategy for Graver Technologies.",
-    tags: ["ESG", "Business", "Consulting", "Fund-Management"],
-    status: "InProgress",
-    start: "Aug 2024",
-    end: "Present",
-    details: "Worked with the IDEA Center on a sustainability consulting project focused on strategic solutions for industrial clients."
-  },
-  {
-    title: "Yelo Project Associate",
-    description: "Startup market research for college rideshare app 'Yelo.'",
-    tags: ["Research", "Startups", "Collaboration", "Problem-Solving"],
-    status: "Completed",
-    start: "Oct 2024",
-    end: "Jan 2025",
-    details: "Conducted market analysis and strategic evaluation for a college rideshare startup aimed at optimizing local travel. Assessed key factors such as social scene dynamics, transportation accessibility, and Greek life influence to identify market gaps and opportunities. Presented findings and strategic recommendations to the Yelo team, contributing to their expansion strategy."
-  },
-  {
-    title: "Game of Life in C",
-    description: "Systems programming with cellular automatation.",
-    tags: ["C", "Terminal", "VSC"],
-    status: "Completed",
-    start: "Apr 2025",
-    end: "May 2025",
-    details: "Built Conway’s Game of Life in C with advanced pointer logic, rendering custom start scenes and an endless mode terminal display."
-  }
-];
+import { projects, projectCategories } from '../data/resume';
 
 function Projects() {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [filter, setFilter] = useState('All');
+  const [selected, setSelected] = useState(null);
+
+  const visible = filter === 'All' ? projects : projects.filter((p) => p.category === filter);
+
+  useEffect(() => {
+    if (!selected) return undefined;
+    const onKey = (e) => e.key === 'Escape' && setSelected(null);
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [selected]);
 
   return (
-    <section id="projects" className="projects-section">
-      <h2>Projects</h2>
-      <div className="project-grid">
-        {projectData.map((project, idx) => (
-          <div key={idx} className="project-card" onClick={() => setSelectedProject(project)}>
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <div className="dates">{project.start} – {project.end}</div>
-            <div className={`status ${project.status}`}>{project.status}</div>
-            <div className="tags">
-              {project.tags.map((tag, i) => (
-                <span key={i} className="tag">{tag}</span>
-              ))}
-            </div>
-          </div>
-        ))}
+    <section id="projects" className="section">
+      <div className="container">
+        <header className="section-header reveal">
+          <p className="section-eyebrow">{'// 02. projects'}</p>
+          <h2 className="section-title">Things I've built &amp; advised on</h2>
+          <p className="section-subtitle">
+            Machine learning, consulting engagements, venture diligence and systems work. Click a card for details.
+          </p>
+        </header>
+
+        <div className="filter-bar reveal" role="tablist" aria-label="Filter projects">
+          {projectCategories.map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              role="tab"
+              aria-selected={filter === cat}
+              className={`filter-btn mono ${filter === cat ? 'active' : ''}`}
+              onClick={() => setFilter(cat)}
+            >
+              {cat}
+              <span className="filter-count">
+                {cat === 'All' ? projects.length : projects.filter((p) => p.category === cat).length}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        <div className="project-grid">
+          {visible.map((p) => (
+            <button
+              key={p.title}
+              type="button"
+              className="project-card card card-hover reveal"
+              onClick={() => setSelected(p)}
+            >
+              <div className="project-top">
+                <FiFolder className="project-folder" />
+                <span className="project-metric mono">{p.metric}</span>
+              </div>
+              <h3 className="project-title">{p.title}</h3>
+              <p className="project-org">{p.org}</p>
+              <p className="project-summary">{p.summary}</p>
+              <div className="project-foot">
+                <span className="project-date mono">
+                  {p.start} — {p.end}
+                </span>
+                <FiArrowUpRight className="project-arrow" />
+              </div>
+              <ul className="chip-list">
+                {p.tags.slice(0, 4).map((t) => (
+                  <li key={t} className="chip">
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </button>
+          ))}
+        </div>
       </div>
 
-      {selectedProject && (
-        <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <h2>{selectedProject.title}</h2>
-            <p><strong>{selectedProject.start} – {selectedProject.end}</strong></p>
-            <p><strong>Status:</strong> {selectedProject.status}</p>
-            <p>{selectedProject.details}</p>
-            <div className="tags">
-              {selectedProject.tags.map((tag, i) => (
-                <span key={i} className="tag">{tag}</span>
+      {selected && (
+        <div className="modal-overlay" onClick={() => setSelected(null)}>
+          <div
+            className="modal card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-modal-title"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button type="button" className="icon-btn modal-close" onClick={() => setSelected(null)} aria-label="Close">
+              <FiX />
+            </button>
+            <p className="section-eyebrow">{selected.category}</p>
+            <h3 id="project-modal-title" className="modal-title">
+              {selected.title}
+            </h3>
+            <p className="modal-meta mono">
+              {selected.org} · {selected.start} — {selected.end}
+            </p>
+            <ul className="modal-bullets">
+              {selected.bullets.map((b) => (
+                <li key={b}>{b}</li>
               ))}
-            </div>
+            </ul>
+            <ul className="chip-list">
+              {selected.tags.map((t) => (
+                <li key={t} className="chip">
+                  {t}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       )}
