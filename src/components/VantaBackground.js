@@ -27,7 +27,7 @@ function VantaBackground({ theme }) {
         points: isMobile ? 5.0 : 7.0,
         maxDistance: isMobile ? 16.0 : 20.0,
         spacing: isMobile ? 22.0 : 18.0,
-        color: isDark ? 0x38bdf8 : 0x4f46e5, // dot + line color
+        color: isDark ? 0x5ec8f2 : 0x0369a1, // dot + line color
         backgroundColor: isDark ? 0x0a0e14 : 0xf5f7fb,
         showDots: true,
       });

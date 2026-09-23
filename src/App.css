@@ -18,16 +18,13 @@
   opacity: 0.5;
 }
 
-/* Softens the Vanta net and adds subtle colour glows so text stays readable. */
+/* Fades the Vanta net toward the bottom of the viewport so text stays readable. */
 .bg-overlay {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background:
-    radial-gradient(60rem 40rem at 85% -10%, rgba(129, 140, 248, 0.16), transparent 60%),
-    radial-gradient(50rem 36rem at -10% 30%, rgba(56, 189, 248, 0.12), transparent 60%),
-    linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--bg) 55%, transparent) 100%);
+  background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--bg) 60%, transparent) 100%);
 }
 
 main {

@@ -76,20 +76,12 @@
   transition: color 0.2s ease, background 0.2s ease;
 }
 
-.nav-link:hover,
-.nav-link.active {
+.nav-link:hover {
   color: var(--text);
-  background: var(--accent-soft);
 }
 
-.nav-link.active .nav-index {
+.nav-link.active {
   color: var(--accent);
-}
-
-.nav-index {
-  font-size: 0.72rem;
-  color: var(--text-faint);
-  margin-right: 6px;
 }
 
 .nav-resume {
@@ -112,9 +104,6 @@
 }
 
 @media (max-width: 960px) {
-  .nav-index {
-    display: none;
-  }
   .nav-link {
     padding: 8px 9px;
   }
@@ -151,10 +140,6 @@
   .nav-link {
     font-size: 1rem;
     padding: 12px 14px;
-  }
-
-  .nav-index {
-    display: inline;
   }
 
   .nav-resume {

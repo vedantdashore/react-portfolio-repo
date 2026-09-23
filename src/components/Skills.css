@@ -9,17 +9,9 @@
 }
 
 .skill-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0 0 16px;
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.skill-group svg {
-  color: var(--accent);
-  font-size: 1.1rem;
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 .skill-list {
@@ -34,7 +26,7 @@
 .skill-item {
   font-size: 0.76rem;
   padding: 5px 10px;
-  border-radius: 8px;
+  border-radius: 4px;
   color: var(--text-muted);
   background: var(--surface-strong);
   border: 1px solid var(--border);
@@ -56,9 +48,6 @@
 }
 
 .lang-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
   font-size: 0.8rem;
   color: var(--accent);
 }
