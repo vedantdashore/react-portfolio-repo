@@ -1,0 +1,38 @@
+import { useEffect } from 'react';
+
+// Fades in any element with the `reveal` class as it scrolls into view.
+// A MutationObserver picks up elements added later (e.g. filtered project cards).
+function useReveal() {
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+      return undefined;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    const observeAll = () =>
+      document.querySelectorAll('.reveal:not(.is-visible)').forEach((el) => io.observe(el));
+
+    observeAll();
+    const mo = new MutationObserver(observeAll);
+    mo.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      io.disconnect();
+      mo.disconnect();
+    };
+  }, []);
+}
+
+export default useReveal;

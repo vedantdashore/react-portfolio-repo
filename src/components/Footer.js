@@ -1,15 +1,30 @@
 import React from 'react';
+import { FaLinkedinIn, FaGithub } from 'react-icons/fa';
+import { FiMail, FiArrowUp } from 'react-icons/fi';
 import './Footer.css';
-import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
+import { profile } from '../data/resume';
 
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>© {new Date().getFullYear()} Vedant Dashore. All Rights Reserved.</p>
-      <div className="footer-icons">
-        <a href="mailto:vdashore@nd.edu" target="_blank" rel="noopener noreferrer"><FaEnvelope /></a>
-        <a href="https://www.linkedin.com/in/vedant-dashore" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
-        <a href="https://github.com/vedantdashore" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+      <div className="container footer-inner">
+        <p className="footer-copy mono">
+          © {new Date().getFullYear()} {profile.name} · built with React
+        </p>
+        <div className="footer-icons">
+          <a className="icon-btn" href={`mailto:${profile.email}`} aria-label="Email">
+            <FiMail />
+          </a>
+          <a className="icon-btn" href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <FaLinkedinIn />
+          </a>
+          <a className="icon-btn" href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <FaGithub />
+          </a>
+          <a className="icon-btn" href="#hero" aria-label="Back to top">
+            <FiArrowUp />
+          </a>
+        </div>
       </div>
     </footer>
   );

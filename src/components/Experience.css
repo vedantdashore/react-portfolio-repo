@@ -1,0 +1,133 @@
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 36px;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2) 60%, transparent);
+  opacity: 0.5;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.timeline-node {
+  position: absolute;
+  left: -34px;
+  top: 26px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+}
+
+.timeline-node.current {
+  background: var(--accent);
+  box-shadow: 0 0 0 5px var(--accent-soft);
+}
+
+.job-card {
+  padding: 24px 26px;
+}
+
+.job-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.job-role {
+  margin: 0 0 4px;
+  font-size: 1.12rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+.job-org {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 14px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.job-loc {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-faint);
+}
+
+.job-date {
+  flex-shrink: 0;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.job-date.current {
+  color: var(--success);
+  border-color: color-mix(in srgb, var(--success) 40%, transparent);
+}
+
+.job-bullets {
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.job-bullets li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.job-bullets li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .timeline {
+    padding-left: 26px;
+  }
+  .timeline::before {
+    left: 5px;
+  }
+  .timeline-node {
+    left: -27px;
+    width: 14px;
+    height: 14px;
+  }
+  .job-card {
+    padding: 20px 18px;
+  }
+  .job-head {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

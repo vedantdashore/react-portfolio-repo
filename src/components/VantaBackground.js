@@ -1,55 +1,46 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import NET from 'vanta/dist/vanta.net.min';
 import * as THREE from 'three';
 
 function VantaBackground({ theme }) {
   const vantaRef = useRef(null);
-  const [vantaEffect, setVantaEffect] = useState(null);
 
   useEffect(() => {
-    if (vantaEffect) vantaEffect.destroy();
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return undefined;
 
     const isDark = theme === 'dark';
+    const isMobile = window.innerWidth < 640;
 
-    const newEffect = NET({
-      el: vantaRef.current,
-      THREE,
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.0,
-      minWidth: 200.0,
-      scale: 1.0,
-      scaleMobile: 1.0,
-      points: 6.0,
-      maxDistance: 15.0,
-      spacing: 20.0,
-      color: isDark ? 0xffffff : 0x000000, // dot + line color
-      backgroundColor: isDark ? 0x0d1117 : 0xf2f2f2,
-      showDots: true,
-      showLines: true,
-    });
+    let effect;
+    try {
+      effect = NET({
+        el: vantaRef.current,
+        THREE,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        points: isMobile ? 5.0 : 7.0,
+        maxDistance: isMobile ? 16.0 : 20.0,
+        spacing: isMobile ? 22.0 : 18.0,
+        color: isDark ? 0x38bdf8 : 0x4f46e5, // dot + line color
+        backgroundColor: isDark ? 0x0a0e14 : 0xf5f7fb,
+        showDots: true,
+      });
+    } catch (e) {
+      // No WebGL (old devices, locked-down browsers, crawlers): keep the plain CSS background
+      // instead of letting the error unmount the whole app.
+      return undefined;
+    }
 
-    setVantaEffect(newEffect);
-
-    return () => {
-      newEffect?.destroy();
-    };
+    return () => effect?.destroy();
   }, [theme]);
 
-  return (
-    <div
-      ref={vantaRef}
-      style={{
-        position: 'fixed',
-        width: '100%',
-        height: '100%',
-        top: 0,
-        left: 0,
-        zIndex: -1,
-      }}
-    />
-  );
+  return <div ref={vantaRef} className="vanta-bg" aria-hidden="true" />;
 }
 
 export default VantaBackground;

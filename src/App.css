@@ -1,47 +1,35 @@
-/* app.css */
-
-/* Layout and spacing */
+/* App shell */
 .app {
   width: 100%;
-  overflow-x: hidden;
-}
-
-/* Sections */
-section {
-  padding: 80px 20px;
-}
-
-/* Buttons */
-button {
-  padding: 10px 16px;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
-}
-
-.app {
-  width: 100%;
-  overflow-x: hidden;
-  position: relative;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .vanta-bg {
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  inset: 0;
+  z-index: -2;
+  background: var(--bg);
 }
 
+/* Vanta's additive blending makes lines near-white on dark; dim them so body text stays readable. */
+:root[data-theme='dark'] .vanta-canvas {
+  opacity: 0.5;
+}
+
+/* Softens the Vanta net and adds subtle colour glows so text stays readable. */
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60rem 40rem at 85% -10%, rgba(129, 140, 248, 0.16), transparent 60%),
+    radial-gradient(50rem 36rem at -10% 30%, rgba(56, 189, 248, 0.12), transparent 60%),
+    linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--bg) 55%, transparent) 100%);
+}
+
+main {
+  position: relative;
+}
