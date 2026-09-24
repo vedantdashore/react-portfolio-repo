@@ -57,3 +57,105 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ---------- Certifications & honors ---------- */
+.cred-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.cred-block {
+  padding: 20px 22px 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.cred-title {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.cred-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cred-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 12px 0;
+  border-top: 1px dashed var(--border);
+}
+
+.cred-row:first-child {
+  border-top: none;
+}
+
+.cred-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.cred-name {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.cred-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.cred-link svg {
+  font-size: 0.85em;
+  color: var(--text-faint);
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.cred-link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+.cred-link:hover svg {
+  color: var(--accent);
+  transform: translate(1px, -1px);
+}
+
+.cred-issuer {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+.cred-note {
+  font-size: 0.82rem;
+  color: var(--text-faint);
+}
+
+.cred-date {
+  flex-shrink: 0;
+  font-size: 0.74rem;
+  color: var(--text-faint);
+}
+
+@media (max-width: 800px) {
+  .cred-grid {
+    grid-template-columns: 1fr;
+  }
+}
