@@ -63,11 +63,12 @@
   margin-left: auto;
   flex-shrink: 0;
   color: var(--text-faint);
-  transition: color 0.2s ease;
+  transition: color 0.15s ease, transform 0.2s ease;
 }
 
 .contact-item:hover .contact-arrow {
   color: var(--accent);
+  transform: translate(1px, -1px);
 }
 
 @media (max-width: 820px) {

@@ -92,7 +92,7 @@ export const experience = [
       'Researched Industry 4.0 automation, focusing on drone-based inspection and data visualization for manufacturing clients across energy, logistics and construction.',
       'Strengthened technical fluency in web development and IoT communication protocols.',
     ],
-    tags: ['Web Dev', 'IoT', 'Industry 4.0'],
+    tags: ['JavaScript', 'Node.js', 'PostgreSQL', 'IoT'],
   },
   {
     role: 'IT & Cybersecurity Intern',
@@ -164,7 +164,7 @@ export const projects = [
     bullets: [
       'Assessed SAP S/4HANA, EAM and FSM technology for a global manufacturer, identifying gaps in maintenance, visibility and operations.',
       'Designed an 18-month transformation map for 200+ franchises covering integration strategy and KPI-driven deployment.',
-      'Presented a unified SAP EAM-FSM ecosystem projected to reduce unplanned downtime by 20%.',
+      "Presented a unified SAP EAM-FSM ecosystem, projected to reduce unplanned downtime by 20%, to EY's Chicago office.",
     ],
     tags: ['SAP S/4HANA', 'EAM', 'FSM', 'Digital Transformation'],
   },
@@ -324,6 +324,41 @@ export const education = [
     detail: 'Higher Level: Math AA, Physics, Chemistry',
     date: 'Graduated 2024',
     items: ['Math AA HL', 'Physics HL', 'Chemistry HL', 'Economics SL', 'English Lang & Lit SL', 'Spanish ab initio SL'],
+  },
+];
+
+export const certifications = [
+  {
+    name: 'AI Scholars Bootcamp',
+    issuer: 'Veritas AI',
+    date: 'Jun 2023',
+    note: 'Summer 2023 cohort',
+  },
+  {
+    name: 'Programming with Python',
+    issuer: 'Internshala Trainings',
+    date: 'Aug 2021',
+    note: 'Six-week course: OOP, SQLite, PyQt GUIs',
+    url: 'https://trainings.internshala.com/verify_certificate',
+  },
+];
+
+export const honors = [
+  {
+    name: 'Full merit scholarship',
+    issuer: 'Data Science for Engineers, London',
+    date: '2025',
+  },
+  {
+    name: 'Finalist, McCloskey New Venture Competition',
+    issuer: 'Notre Dame IDEA Center',
+    date: '2026',
+  },
+  {
+    name: 'Certificates of Appreciation (2)',
+    issuer: 'Saudi Aramco NA Community Services',
+    date: 'Dec 2022',
+    note: "For men's mental health awareness sessions with employees and contractors",
   },
 ];
 
