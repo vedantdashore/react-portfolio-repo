@@ -1,0 +1,245 @@
+/* ========== Side-rail character ========== */
+.pixel {
+  font-family: 'Silkscreen', 'JetBrains Mono', ui-monospace, monospace;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.runner {
+  --px: 3px;
+  --block-w: 60px;
+  --sprite-outline: #020305;
+  position: fixed;
+  z-index: 40;
+  right: 20px;
+  top: 96px;
+  bottom: 28px;
+  width: var(--block-w);
+  pointer-events: none;
+}
+
+:root[data-theme='light'] .runner {
+  --sprite-outline: #0f172a;
+}
+
+.runner-platforms {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  margin: 0;
+  padding: calc(24 * var(--px) + 8px) 0 0;
+  list-style: none;
+}
+
+/* A dashed guide line linking the platforms. */
+.runner-rail .runner-platforms::before {
+  content: '';
+  position: absolute;
+  right: calc(var(--block-w) / 2 - 1px);
+  top: calc(24 * var(--px) + 14px);
+  bottom: 6px;
+  width: 2px;
+  background: repeating-linear-gradient(to bottom, var(--border-strong) 0 6px, transparent 6px 12px);
+}
+
+.runner-platforms li {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.platform {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--text-faint);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.platform-label {
+  display: none;
+  font-size: 0.58rem;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.platform:hover .platform-label {
+  color: var(--text);
+}
+
+.platform-block {
+  position: relative;
+  width: var(--block-w);
+  height: 12px;
+  background: var(--surface-strong);
+  border: 2px solid var(--border-strong);
+  border-top-width: 4px;
+  transition: border-color 0.25s steps(3), box-shadow 0.25s ease;
+}
+
+.platform.done .platform-block {
+  border-top-color: color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+.platform.active .platform-block {
+  border-color: var(--accent);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.platform.active .platform-label {
+  color: var(--accent);
+}
+
+.platform:focus-visible {
+  outline: none;
+}
+
+.platform:focus-visible .platform-block {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Character ---------- */
+.runner-char {
+  position: absolute;
+  top: 0;
+  right: calc(var(--block-w) / 2 - 9 * var(--px));
+  width: calc(18 * var(--px));
+  height: calc(24 * var(--px));
+  transform-origin: 50% 58%;
+  will-change: transform;
+}
+
+.runner-body {
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 100%;
+}
+
+.runner-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(-1);
+}
+
+:root[data-theme='dark'] .runner-svg {
+  filter: drop-shadow(0 0 0.6px rgba(230, 237, 243, 0.6)) drop-shadow(0 6px 12px rgba(94, 200, 242, 0.18));
+}
+
+.runner-toast {
+  position: absolute;
+  right: calc(var(--block-w) / 2 + 9 * var(--px) + 6px);
+  padding: 5px 7px 4px;
+  font-size: 0.58rem;
+  white-space: nowrap;
+  color: var(--accent-ink);
+  background: var(--accent);
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--text) 28%, transparent);
+  animation: runner-toast 1.3s ease forwards;
+}
+
+@keyframes runner-toast {
+  0% {
+    opacity: 0;
+    transform: translateX(6px) scale(0.9);
+  }
+  12%,
+  75% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+.runner-dust {
+  position: absolute;
+  right: calc(var(--block-w) / 2);
+  width: 0;
+  height: 0;
+}
+
+.runner-dust i {
+  position: absolute;
+  bottom: 0;
+  width: 4px;
+  height: 4px;
+  background: var(--text-muted);
+  animation: runner-dust 0.45s ease-out forwards;
+}
+
+.runner-dust i:nth-child(1) {
+  --dx: -26px;
+  --dy: -10px;
+}
+.runner-dust i:nth-child(2) {
+  --dx: -14px;
+  --dy: -16px;
+}
+.runner-dust i:nth-child(3) {
+  --dx: 14px;
+  --dy: -16px;
+}
+.runner-dust i:nth-child(4) {
+  --dx: 26px;
+  --dy: -10px;
+}
+
+@keyframes runner-dust {
+  to {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy));
+  }
+}
+
+/* ---------- Wide screens: room for labels beside the platforms ---------- */
+@media (min-width: 1560px) {
+  .runner-rail {
+    width: 190px;
+  }
+  .runner-rail .platform-label {
+    display: inline;
+  }
+}
+
+/* ---------- Narrow screens: one platform in the corner ---------- */
+.runner-corner {
+  top: auto;
+  right: 14px;
+  bottom: 14px;
+  width: auto;
+  height: calc(24 * var(--px) + 22px);
+  --block-w: 54px;
+}
+
+.runner-corner .platform {
+  pointer-events: none;
+}
+
+.runner-corner .platform-label {
+  display: inline;
+  padding: 3px 6px 2px;
+  color: var(--accent);
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  .runner-corner {
+    --px: 2px;
+    --block-w: 40px;
+    right: 10px;
+    bottom: 10px;
+  }
+  .runner-corner .platform-label {
+    display: none;
+  }
+}

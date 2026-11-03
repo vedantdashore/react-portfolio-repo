@@ -12,6 +12,7 @@ import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import VantaBackground from './components/VantaBackground';
+import SideRunner from './character/SideRunner';
 import useReveal from './hooks/useReveal';
 import './App.css';
 
@@ -59,6 +60,7 @@ function App() {
         />
       </Routes>
       <Footer />
+      <SideRunner />
     </div>
   );
 }
