@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FiX, FiArrowUpRight } from 'react-icons/fi';
+import { FiX, FiArrowUpRight, FiExternalLink } from 'react-icons/fi';
 import './Projects.css';
 import { projects, projectCategories } from '../data/resume';
 
@@ -109,6 +109,11 @@ function Projects() {
                 </li>
               ))}
             </ul>
+            {selected.url && (
+              <a href={selected.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary modal-link">
+                <FiExternalLink /> Visit {selected.title}
+              </a>
+            )}
           </div>
         </div>
       )}

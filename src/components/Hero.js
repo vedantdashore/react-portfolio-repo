@@ -1,6 +1,6 @@
 // src/components/Hero.js
 import React from 'react';
-import { FiDownload, FiMail } from 'react-icons/fi';
+import { FiDownload, FiExternalLink, FiMail } from 'react-icons/fi';
 import { FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import './Hero.css';
 import headshot from '../assets/headshot.jpg';
@@ -35,6 +35,9 @@ function Hero() {
           <div className="hero-cta reveal">
             <a href="/resume.pdf" download="Vedant_Dashore_Resume.pdf" className="btn btn-primary">
               <FiDownload /> Resume
+            </a>
+            <a href={profile.internpilot} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
+              <FiExternalLink /> InternPilot
             </a>
             <a href={`mailto:${profile.email}`} className="btn btn-ghost">
               <FiMail /> Email me
